@@ -85,15 +85,10 @@ function renderMon(monObj) {
 
 let page = 1
 
-
-const forwardButton = document.querySelector("#forward")
-document.querySelector("#forawrd")
-forwardButton.addEventListener("click", nextPage)
-
 function nextPage() {
     page++
-    const container = document.querySelector("#monster-container")
-    fetch(`http://localhost:3000/monsters/?_limit=50&_page=${page}`)
+    const container = document.querySelector("monster-container")
+    fetch(`http://localhost:3000/monsters/?_limit=20&_page=${page}`)
     .then(response => response.json())
     .then(moreMon => {
         container.innerHTML = ""
@@ -102,16 +97,11 @@ function nextPage() {
     })})
 }
 
-function backPage() {
-    page--
-    const container = document.querySelector("#monster-container")
-    fetch(`http://localhost:3000/monsters/?_limit=50&_page=${page}`)
-    .then(response => response.json())
-    .then(moreMon => {
-    container.innerHTML = ""
-    moreMon.forEach(monster => {
-        postMonsters(monster)
-    })})
-}
-const backButton = document.querySelector("#back")
-backButton.addEventListener("click", backPage)
+
+// function nextPage() {
+//     const nextButton = document.querySelector("#forward")
+//     nextButton.addEventListener("click", (e) => {
+//         console.log("click")
+//     })
+// }
+

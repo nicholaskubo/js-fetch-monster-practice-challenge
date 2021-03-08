@@ -83,35 +83,23 @@ function renderMon(monObj) {
     .then(mon => postMonsters(mon))
 }
 
-let page = 1
+// function nextPage() {
+//     page++
+
+//     fetch(`http://localhost:3000/monsters/?_limit=20&_page=${page}`)
+//     .then(response => response.json)
+//     .then(moreMon => {
+//         container.innerHTML
+        
+//     })
+// }
 
 
-const forwardButton = document.querySelector("#forward")
-document.querySelector("#forawrd")
-forwardButton.addEventListener("click", nextPage)
+// function nextPage() {
+//     const nextButton = document.querySelector("#forward")
+//     nextButton.addEventListener("click", (e) => {
+//         console.log("click")
+//     })
+// }
 
-function nextPage() {
-    page++
-    const container = document.querySelector("#monster-container")
-    fetch(`http://localhost:3000/monsters/?_limit=50&_page=${page}`)
-    .then(response => response.json())
-    .then(moreMon => {
-        container.innerHTML = ""
-    moreMon.forEach(monster => {
-        postMonsters(monster)
-    })})
-}
-
-function backPage() {
-    page--
-    const container = document.querySelector("#monster-container")
-    fetch(`http://localhost:3000/monsters/?_limit=50&_page=${page}`)
-    .then(response => response.json())
-    .then(moreMon => {
-    container.innerHTML = ""
-    moreMon.forEach(monster => {
-        postMonsters(monster)
-    })})
-}
-const backButton = document.querySelector("#back")
-backButton.addEventListener("click", backPage)
+nextPage()

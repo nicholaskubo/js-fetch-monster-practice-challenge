@@ -4,7 +4,7 @@ const form = document.createElement("form")
 
 function getMonsters() {
     
-    fetch("http://localhost:3000/monsters/?_limit=50&_page=1")
+    fetch("http://localhost:3000/monsters/?_limit=50")
     .then(response => response.json())
     .then(monsters => monsters.forEach(monster => postMonsters(monster)))
     .catch(error => console.log(error))
@@ -83,35 +83,9 @@ function renderMon(monObj) {
     .then(mon => postMonsters(mon))
 }
 
-let page = 1
-
-
-const forwardButton = document.querySelector("#forward")
-document.querySelector("#forawrd")
-forwardButton.addEventListener("click", nextPage)
-
 function nextPage() {
-    page++
-    const container = document.querySelector("#monster-container")
-    fetch(`http://localhost:3000/monsters/?_limit=50&_page=${page}`)
-    .then(response => response.json())
-    .then(moreMon => {
-        container.innerHTML = ""
-    moreMon.forEach(monster => {
-        postMonsters(monster)
-    })})
+    const nextButton = document.querySelector("#forward")
+    nextButton.addEventListener("click", (e => {
+        console.log("click")
+    })
 }
-
-function backPage() {
-    page--
-    const container = document.querySelector("#monster-container")
-    fetch(`http://localhost:3000/monsters/?_limit=50&_page=${page}`)
-    .then(response => response.json())
-    .then(moreMon => {
-    container.innerHTML = ""
-    moreMon.forEach(monster => {
-        postMonsters(monster)
-    })})
-}
-const backButton = document.querySelector("#back")
-backButton.addEventListener("click", backPage)

@@ -93,7 +93,7 @@ forwardButton.addEventListener("click", nextPage)
 function nextPage() {
     page++
     const container = document.querySelector("#monster-container")
-    fetch(`http://localhost:3000/monsters/?_limit=50&_page=${page}`)
+    fetch(`http://localhost:3000/monsters/?_limit=20&_page=${page}`)
     .then(response => response.json())
     .then(moreMon => {
         container.innerHTML = ""
@@ -101,17 +101,3 @@ function nextPage() {
         postMonsters(monster)
     })})
 }
-
-function backPage() {
-    page--
-    const container = document.querySelector("#monster-container")
-    fetch(`http://localhost:3000/monsters/?_limit=50&_page=${page}`)
-    .then(response => response.json())
-    .then(moreMon => {
-    container.innerHTML = ""
-    moreMon.forEach(monster => {
-        postMonsters(monster)
-    })})
-}
-const backButton = document.querySelector("#back")
-backButton.addEventListener("click", backPage)

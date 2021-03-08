@@ -108,10 +108,8 @@ function backPage() {
     fetch(`http://localhost:3000/monsters/?_limit=50&_page=${page}`)
     .then(response => response.json())
     .then(moreMon => {
-    container.innerHTML = ""
+        container.innerHTML = ""
     moreMon.forEach(monster => {
         postMonsters(monster)
     })})
 }
-const backButton = document.querySelector("#back")
-backButton.addEventListener("click", backPage)
